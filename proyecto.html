@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deli</title>
+    <title>Huevaleria</title>
     <link rel="stylesheet" href="normalice.css"> <!--link para normalizar la pagina, para que se vea igual en todos los navegadores -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--estos son tipos de letras que use para el h1 y h2-->
+    <!-- OKOKOKOKOKOKOk -->
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Truculenta:opsz,wght@12..72,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Truculenta:opsz,wght@12..72,100..900&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="estilo.css"> 
 
@@ -21,30 +22,97 @@
 
 
 <body>
-
-
-  <header class="header-hero">
+    <header class="header-hero">
     <div class="contenido-hero contenedor">
-      <h1>EL VERDADERO ANTOJO,<br> TIENE FORMA DE GORDITA</h1>
-      <h2>Gorditas, tortillones y burritos preparados con amor y tradición</h2>
+        <h1>EL VERDADERO ANTOJO,<br> TIENE FORMA DE GORDITA</h1>
+        <h2>Gorditas, tortillones y burritos preparados con amor y tradición</h2>
     </div>
   </header>
 
  
-  <div class="navegador">
-    <div class="contenedor contenido-navegador">
-      <a href="proyecto.html" class="logo-link">
-        <img src="Gordilonalogo.png" alt="Logo" class="logo-img">
-      </a>
+    <div class="navegador">
+        <div class="contenedor contenido-navegador">
+            <a href="proyecto.html" class="logo-link">
+                <img src="imagenes/Gordilonalogo.png" alt="Logo" class="logo-img">
+            </a>
 
-      <nav class="navegacion-principal">
-        <a href="#">INICIO</a>
-        <a href="#">MENÚ</a>
-        <a href="#">UBICACIÓN</a>
-        <a href="#">NOSOTROS</a>
-        <a href="#">CONTACTO</a>
-      </nav>
-    </div>     
-  </div>
+            <nav class="navegacion-principal">
+                <a href="#">INICIO</a>
+                <a href="#">MENÚ</a>
+                <a href="#">UBICACIÓN</a>
+                <a href="#">NOSOTROS</a>
+                <a href="#">CONTACTO</a>
+            </nav>
+        </div> 
+    </div> 
+    
+    <!-- =================================================================================================================================-->
+    <div class="menu contenedor">
+        <!-- Encabezado superior -->
+        <div class="encabezado-menu">
+        <span class="subtitulo-comal">LO BUENO DEL COMAL</span>
+        <h2>Nuestro Menú de Antojos</h2>
+        <p>Selecciona tu especialidad favorita y escoge entre nuestros guisados recién preparados.</p>
+    </div>
 
+    <!-- Pestañas de categoría-->
+    <div class="categorias-tabs">
+        <button class="tab-btn activo">Gorditas</button>
+        <button class="tab-btn">Tortillones</button>
+        <button class="tab-btn">Burritos</button>
+    </div>
+
+
+    <!-- Grid de tarjetas -->
+    <div class="grid-tarjetas">
+
+        <!-- Tarjeta 1 -->
+        <div class="tarjeta-platillo">
+            <div class="imagen-contenedor">
+                <img src="imagenes/gordita-menu.jpeg" alt="Gorditas">
+                <span class="precio-tag">$20 MXN</span>
+            </div>
+            <div class="contenido-tarjeta">
+                <h3>Gordita Tradicional de Harina o Maíz</h3>
+                <p>Masa de harina o maíz dorada al comal, rellenita de tu guisado favorito.</p>
+                <div class="pie-tarjeta">
+                    <span class="detalle-guisado">Guisos disponibles</span>
+                    <button class="btn-pedir">Pedir &gt;</button> <!-- Botón de pedido(este queda pendiente hacerle funcion para siguientes proyectos)-->
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="tarjeta-platillo">
+            <div class="imagen-contenedor">
+                <img src="imagenes/tortillon-menu.jpeg" alt="Tortillones">
+                <span class="precio-tag">$35 MXN</span>
+            </div>
+            <div class="contenido-tarjeta">
+                <h3>Tortillones</h3>
+                <p>Deliciosos tortillones hechos con masa de maíz y rellenos de tu elección.</p>
+                <div class="pie-tarjeta">
+                    <span class="detalle-guisado">Guisos disponibles</span>
+                    <button class="btn-pedir">Pedir &gt;</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="tarjeta-platillo">
+            <div class="imagen-contenedor">
+                <img src="imagenes/burrito-menu.jpeg" alt="Burritos">
+                <span class="precio-tag">$20 MXN</span>
+            </div>
+                <div class="contenido-tarjeta">
+                    <h3>Burritos</h3>
+                    <p>Deliciosos burritos rellenos de tu guiso favorito y acompañados con nuestros salsas especiales.</p>
+                        <div class="pie-tarjeta">
+                            <span class="detalle-guisado">Guisos disponibles</span>
+                            <button class="btn-pedir">Pedir &gt;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
