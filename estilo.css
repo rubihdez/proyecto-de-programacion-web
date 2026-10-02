@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5e8ca; 
+}
+
+.contenedor {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header-hero {
+  background-image: linear-gradient(rgba(245, 232, 202, 0.72), rgba(245, 232, 202, 0.72)), url("gorditassss.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 1rem;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenido-hero h1 {
+  font-family: "Cinzel", serif;
+  color: #8C2D19; 
+  font-size: 2.8rem; 
+  margin: 0 0 0.8rem 0;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.contenido-hero h2 {
+  font-family: "Cormorant Garamond", serif;
+  color: #222222;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: italic;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+/* BARRA DE NAVEGACIÓN */
+.navegador {
+  background-color: #0C5335;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.contenido-navegador {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.logo-link {
+  display: inline-block;
+  line-height: 0;
+}
+
+.logo-img {
+  height: 55px !important;
+  max-width: 120px !important;
+  object-fit: contain;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* Menú de Navegación */
+.navegacion-principal {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  margin: 0 auto;
+}
+
+.navegacion-principal a {
+  color: #F4D068; 
+  text-decoration: none;
+  font-family: "Cinzel", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.navegacion-principal a:hover {
+  background-color: #8C2D19;
+  color: #FFFFFF;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .header-hero {
+    padding: 2.5rem 1rem;
+    min-height: 180px;
+  }
+
+  .contenido-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .contenido-hero h2 {
+    font-size: 1.1rem;
+  }
+
+  .contenido-navegador {
+    position: relative; /* Solo declaras lo que cambia para móviles */
+  }
+
+  .navegacion-principal {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navegacion-principal a {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
