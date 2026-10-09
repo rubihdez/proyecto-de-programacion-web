@@ -1,18 +1,19 @@
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #f5e8ca; 
+  background-color: #f5e8ca;
 }
 
-/* ==========================================
-   SECCIÓN DEL HEADER Y HERO
-   ========================================== */
 .contenedor {
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
 }
 
+/* =========================================================
+   HEADER / HERO
+   ========================================================= */
 .header-hero {
   background-image: linear-gradient(rgba(245, 232, 202, 0.72), rgba(245, 232, 202, 0.72)), url("imagenes/gorditassss.jpg");
   background-repeat: no-repeat;
@@ -30,8 +31,8 @@ body {
 
 .contenido-hero h1 {
   font-family: "Cinzel", serif;
-  color: #8C2D19; 
-  font-size: 2.8rem; 
+  color: #8C2D19;
+  font-size: 2.8rem;
   margin: 0 0 0.8rem 0;
   letter-spacing: 1px;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
@@ -47,7 +48,9 @@ body {
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
 }
 
-/* BARRA DE NAVEGACIÓN */
+/* =========================================================
+    BARRA DE NAVEGACIÓN
+   ========================================================= */
 .navegador {
   background-color: #0C5335;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
@@ -77,7 +80,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Menú de Navegación */
+/* Menú de navegación */
 .navegacion-principal {
   display: flex;
   align-items: center;
@@ -86,7 +89,7 @@ body {
 }
 
 .navegacion-principal a {
-  color: #F4D068; 
+  color: #F4D068;
   text-decoration: none;
   font-family: "Cinzel", serif;
   font-size: 1rem;
@@ -103,15 +106,15 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* ==========================================
-   SECCIÓN DEL MENÚ (HECHO POR EL MAS GUAPO DE TODOS LOS TIEMPOS)
-   ========================================== */
+/* =========================================================
+    SECCIÓN DEL MENÚ
+   ========================================================= */
 .menu {
   padding: 3.5rem 0;
   text-align: center;
 }
 
-/* Encabezado */
+/* 4.1 Encabezado del menú */
 .encabezado-menu .subtitulo-comal {
   color: #8C2D19;
   font-family: "Cinzel", serif;
@@ -137,7 +140,7 @@ body {
   margin: 0 0 2rem 0;
 }
 
-/* Filtros / Pestañas de categorías */
+/* 4.2 Pestañas de categorías */
 .categorias-tabs {
   display: inline-flex;
   background-color: #ebdcb9;
@@ -188,13 +191,13 @@ body {
   text-align: center;
 }
 
-/* Efecto hover en la tarjeta (Asi se ve bien perro)*/
+/* Efecto hover en la tarjeta */
 .tarjeta-platillo:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Contenedor de la imagen y etiqueta de precio */
+/*  Imagen y etiqueta de precio */
 .imagen-contenedor {
   position: relative;
   width: 100%;
@@ -204,6 +207,7 @@ body {
 }
 
 .imagen-contenedor img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -224,7 +228,7 @@ body {
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* Contenido de la tarjeta */
+/*  Contenido de la tarjeta */
 .contenido-tarjeta {
   padding: 1.2rem;
   display: flex;
@@ -248,13 +252,14 @@ body {
   flex-grow: 1;
 }
 
-/* Pie de la tarjeta */
+/* Pie de la tarjeta (detalle + botón Pedir) */
 .pie-tarjeta {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid #f0e4ca;
   padding-top: 0.8rem;
+  margin-top: auto;
 }
 
 .detalle-guisado {
@@ -282,7 +287,269 @@ body {
   background-color: #8C2D19;
 }
 
-/* MEDIA QUERIES */
+/* =========================================================
+   DESPLEGABLE DE GUISOS 
+   ========================================================= */
+.guisos-desplegable {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Botón que abre el desplegable */
+.guisos-desplegable summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Cinzel", serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0C5335;
+  background: #FAF4E8;
+  border: 1px solid #0C5335;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.guisos-desplegable summary::-webkit-details-marker {
+  display: none;
+}
+
+.guisos-desplegable summary:hover {
+  background: #0C5335;
+  color: #FFFFFF;
+}
+
+/* Flecha que gira al abrir */
+.guisos-desplegable .flecha {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.guisos-desplegable[open] .flecha {
+  transform: rotate(180deg);
+}
+
+/* Lista de guisos en cuadrícula */
+.lista-guisos {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 10px 0 0 0;
+  padding: 0;
+  font-family: "Truculenta", sans-serif;
+  color: #333;
+  animation: bajarGuisos 0.35s ease;
+}
+
+.lista-guisos li {
+  font-family: "Truculenta", sans-serif;
+  font-size: 0.85rem;
+  color: #333;
+  background: #FFFDF7;
+  border: 1px dashed #e2d3b2;
+  border-radius: 8px;
+  padding: 6px 8px;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.lista-guisos li:hover {
+  border-style: solid;
+  border-color: #8C2D19;
+  color: #8C2D19;
+}
+
+@keyframes bajarGuisos {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/*        
+   ========== UBICACIÓN Y HORARIOS ========== */
+
+.seccion-ubicacion{
+  
+  padding: 64px 16px;
+}
+
+.seccion-ubicacion h2{
+  text-align:center;
+  margin-bottom: 26px;
+  font-weight: 900;
+  letter-spacing: .8px;
+  color: #0e602c;
+}
+
+
+.grid-ubicacion{
+  max-width: 760px;          
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;    /* centra la tarjeta */
+  align-items: center;
+  gap: 18px;
+}
+
+/* Tarjeta */
+.datos-contacto{
+  width: 100%;
+  background: rgba(255,255,255,.95);
+  border: 1px solid rgba(12,21,45,.08);
+  border-radius: 18px;
+  padding: 26px 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+
+.datos-contacto p{
+  margin: 0 0 14px;
+  color: #19240f;
+  font-size: 1.02rem;
+  line-height: 1.55;
+
+  /* para que los íconos queden alineados bonito */
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+
+.datos-contacto p:last-child{
+  margin-bottom: 0;
+}
+
+.datos-contacto strong{
+  color: #023408;
+  font-weight: 950;
+}
+
+
+.datos-contacto p strong::before{
+ 
+  content: "";
+}
+
+
+.datos-contacto p{
+  padding-bottom: 12px;
+  border-bottom: 1px dashed rgba(12,21,45,.15);
+}
+
+.datos-contacto p:last-child{
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 480px){
+  .seccion-ubicacion{
+    padding: 48px 14px;
+    margin-bottom: 60px
+  }
+
+  .seccion-ubicacion h2{
+    margin-bottom: 18px;
+    font-size: 1.45rem;
+    
+  }
+
+  .grid-ubicacion{
+    max-width: 100%;
+  }
+
+  .datos-contacto{
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+
+  .datos-contacto p{
+    font-size: .98rem;
+    gap: 9px;
+  }
+}
+
+.datos-contacto p:last-child{
+  margin-bottom: 0;
+}
+
+.datos-contacto strong{
+  color: var(--dark);
+  font-weight: 800;
+}
+
+/* ========== FOOTER ========== */
+footer#contacto{
+  background: #123b11;
+  color: rgba(255,255,255,.92);
+  padding: 26px 18px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+footer#contacto p{
+  margin: 0 0 14px;
+  color: rgba(255,255,255,.78);
+}
+
+.redes-sociales{
+  display:flex;
+  justify-content:center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.redes-sociales a{
+  color: rgba(255,255,255,.92);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.redes-sociales a:hover{
+  transform: translateY(-2px);
+  background: rgba(255,183,3,.18);
+  border-color: rgba(255,183,3,.35);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px){
+  .grid-ubicacion{
+    grid-template-columns: 1fr;
+  }
+  .mapa-frame iframe{
+    min-height: 220px;
+  }
+}
+
+/* Suave mejora en móviles */
+@media (max-width: 480px){
+  .seccion-nosotros,
+  .seccion-ubicacion{
+    padding: 44px 14px;
+  }
+  .seccion-nosotros .nosotros-contenido{
+    padding: 20px 16px;
+  }
+  .datos-contacto{
+    padding: 18px;
+  }
+}
+
+/* =========================================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================================= */
 @media (max-width: 768px) {
   .header-hero {
     padding: 2.5rem 1rem;
@@ -325,5 +592,11 @@ body {
   .tab-btn {
     padding: 8px 14px;
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lista-guisos {
+    grid-template-columns: 1fr;
   }
 }
