@@ -589,9 +589,7 @@ footer#contacto p{
 }
 
 
-/* =========================================================================
-   ===================== LO NUEVO (agregado al final) ======================
-   ========================================================================= */
+/*==================================================================== */
 
 /* Scroll suave al darle clic al menú (INICIO, MENÚ, NOSOTROS, etc.) */
 html {
@@ -619,7 +617,7 @@ html {
   border-radius: 16px;
   border: 1px solid #e2d3b2;
   box-shadow: 10px 10px 0 #0C5335;
-  background-color: #ebdcb9; /* color por si aún no pones la foto */
+  background-color: #ebdcb9; 
 }
 
 .nosotros-contenido .subtitulo-comal {
@@ -985,7 +983,7 @@ html {
 }
 
 
-/* El guiso aparece cuando ya elegiste piezas */
+
 .guiso-fila {
   display: block;
   width: 100%;
