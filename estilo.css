@@ -325,16 +325,6 @@ body {
   color: #FFFFFF;
 }
 
-/* Flecha que gira al abrir */
-.guisos-desplegable .flecha {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.guisos-desplegable[open] .flecha {
-  transform: rotate(180deg);
-}
-
 /* Lista de guisos en cuadrícula */
 .lista-guisos {
   list-style: none;
@@ -345,7 +335,6 @@ body {
   padding: 0;
   font-family: "Truculenta", sans-serif;
   color: #333;
-  animation: bajarGuisos 0.35s ease;
 }
 
 .lista-guisos li {
@@ -365,11 +354,6 @@ body {
   border-style: solid;
   border-color: #8C2D19;
   color: #8C2D19;
-}
-
-@keyframes bajarGuisos {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 /*        
@@ -877,25 +861,7 @@ html {
   }
 }
 
-/* =========================================================================
-   ============ CARRITO CON + Y − (solo CSS, sin JavaScript) ===============
-   ========================================================================= */
 
-/* Los contadores de CSS: guardan cuántas piezas y cuánto dinero llevas */
-body {
-  counter-reset: cg sg ct st cb sb pzas total;
-}
-
-/* Los radios de estado quedan invisibles (pero NO con display:none,
-   porque si no los contadores no funcionan) */
-.estado {
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  pointer-events: none;
-}
 
 /* ---------- Carrito en la barra de navegación ---------- */
 .carrito-nav {
@@ -930,10 +896,6 @@ body {
   font-size: 0.8rem;
 }
 
-.carrito-nav__num::after {
-  content: counter(pzas);
-}
-
 .carrito-nav:hover .carrito-nav__num {
   background-color: #F4D068;
   color: #8C2D19;
@@ -962,6 +924,53 @@ body {
   border-radius: 12px;
 }
 
+.contador {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contador button {
+  background-color: #0C5335;
+  color: #FFFFFF;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: "Cinzel", serif;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contador button:hover {
+  background-color: #8C2D19;
+  transform: scale(1.05);
+}
+
+.contador label {
+  font-family: "Truculenta", sans-serif;
+  font-size: 0.95rem;
+  color: #333333;
+  min-width: 1.2em;
+  text-align: center;
+}
+
+.select-guiso {
+  font-family: "Truculenta", sans-serif;
+  font-size: 0.95rem;
+  color: #333333;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #0C5335;
+  background-color: #FFFDF7;
+}
+.select-guiso option {
+  font-family: "Truculenta", sans-serif;
+  font-size: 0.95rem;
+  color: #333333;
+}
+
 .producto-info strong {
   display: block;
   font-family: "Cinzel", serif;
@@ -975,58 +984,6 @@ body {
   color: #8C2D19;
 }
 
-/* Contador:  [ − ]  2  [ + ] */
-.contador {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid #0C5335;
-  border-radius: 999px;
-  overflow: hidden;
-  background-color: #ffffff;
-}
-
-.contador .btn-menos,
-.contador .btn-mas {
-  display: none;               /* solo se muestra el que toca (ver abajo) */
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  margin: 0;
-  background-color: #0C5335;
-  color: #FFFFFF;
-  font-family: "Truculenta", sans-serif;
-  font-size: 1.4rem;
-  line-height: 1;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.25s ease;
-}
-
-.contador .btn-menos:hover,
-.contador .btn-mas:hover {
-  background-color: #8C2D19;
-}
-
-/* Botón apagado (− en 0, + en el máximo) */
-.contador .apagado,
-.contador .apagado:hover {
-  background-color: #cfc3a2;
-  cursor: not-allowed;
-}
-
-.numero {
-  min-width: 46px;
-  text-align: center;
-  font-family: "Cinzel", serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #222222;
-}
-
-.num-g::after { content: counter(cg); }
-.num-t::after { content: counter(ct); }
-.num-b::after { content: counter(cb); }
 
 /* El guiso aparece cuando ya elegiste piezas */
 .guiso-fila {
@@ -1082,14 +1039,7 @@ body {
   color: #0C5335;
 }
 
-/* Los números del carrito los escriben los contadores */
-.cant-g::after { content: counter(cg); }
-.cant-t::after { content: counter(ct); }
-.cant-b::after { content: counter(cb); }
-.sub-g::after  { content: "$" counter(sg); }
-.sub-t::after  { content: "$" counter(st); }
-.sub-b::after  { content: "$" counter(sb); }
-.total-num::after { content: "$" counter(total); }
+
 
 /* ---------- Confirmación al enviar (aparece con :target) ---------- */
 .pedido-confirmacion {
@@ -1119,90 +1069,3 @@ body {
   }
 }
 
-/* =========================================================================
-   REGLAS AUTOMÁTICAS: qué pasa según la cantidad marcada.
-   Formato:  #g-3:checked  =  "gorditas: 3 piezas marcadas"
-   ========================================================================= */
-
-
-/* ----- Gorditas ($20) ----- */
-#g-1:checked { counter-increment: cg 1 sg 20 pzas 1 total 20; }
-#g-2:checked { counter-increment: cg 2 sg 40 pzas 2 total 40; }
-#g-3:checked { counter-increment: cg 3 sg 60 pzas 3 total 60; }
-#g-4:checked { counter-increment: cg 4 sg 80 pzas 4 total 80; }
-#g-5:checked { counter-increment: cg 5 sg 100 pzas 5 total 100; }
-#g-6:checked { counter-increment: cg 6 sg 120 pzas 6 total 120; }
-#g-7:checked { counter-increment: cg 7 sg 140 pzas 7 total 140; }
-#g-8:checked { counter-increment: cg 8 sg 160 pzas 8 total 160; }
-#g-9:checked { counter-increment: cg 9 sg 180 pzas 9 total 180; }
-#g-10:checked { counter-increment: cg 10 sg 200 pzas 10 total 200; }
-#g-0:checked ~ #pedido .ver-g-0 { display: inline-flex; }
-#g-1:checked ~ #pedido .ver-g-1 { display: inline-flex; }
-#g-2:checked ~ #pedido .ver-g-2 { display: inline-flex; }
-#g-3:checked ~ #pedido .ver-g-3 { display: inline-flex; }
-#g-4:checked ~ #pedido .ver-g-4 { display: inline-flex; }
-#g-5:checked ~ #pedido .ver-g-5 { display: inline-flex; }
-#g-6:checked ~ #pedido .ver-g-6 { display: inline-flex; }
-#g-7:checked ~ #pedido .ver-g-7 { display: inline-flex; }
-#g-8:checked ~ #pedido .ver-g-8 { display: inline-flex; }
-#g-9:checked ~ #pedido .ver-g-9 { display: inline-flex; }
-#g-10:checked ~ #pedido .ver-g-10 { display: inline-flex; }
-#g-0:checked ~ #pedido .linea-g { display: none; }
-#g-0:checked ~ #pedido .guiso-g { display: none; }
-#g-0:checked ~ #pedido .fila-g { border: 1px dashed #e2d3b2; }
-
-/* ----- Tortillones ($60) ----- */
-#t-1:checked { counter-increment: ct 1 st 60 pzas 1 total 60; }
-#t-2:checked { counter-increment: ct 2 st 120 pzas 2 total 120; }
-#t-3:checked { counter-increment: ct 3 st 180 pzas 3 total 180; }
-#t-4:checked { counter-increment: ct 4 st 240 pzas 4 total 240; }
-#t-5:checked { counter-increment: ct 5 st 300 pzas 5 total 300; }
-#t-6:checked { counter-increment: ct 6 st 360 pzas 6 total 360; }
-#t-7:checked { counter-increment: ct 7 st 420 pzas 7 total 420; }
-#t-8:checked { counter-increment: ct 8 st 480 pzas 8 total 480; }
-#t-9:checked { counter-increment: ct 9 st 540 pzas 9 total 540; }
-#t-10:checked { counter-increment: ct 10 st 600 pzas 10 total 600; }
-#t-0:checked ~ #pedido .ver-t-0 { display: inline-flex; }
-#t-1:checked ~ #pedido .ver-t-1 { display: inline-flex; }
-#t-2:checked ~ #pedido .ver-t-2 { display: inline-flex; }
-#t-3:checked ~ #pedido .ver-t-3 { display: inline-flex; }
-#t-4:checked ~ #pedido .ver-t-4 { display: inline-flex; }
-#t-5:checked ~ #pedido .ver-t-5 { display: inline-flex; }
-#t-6:checked ~ #pedido .ver-t-6 { display: inline-flex; }
-#t-7:checked ~ #pedido .ver-t-7 { display: inline-flex; }
-#t-8:checked ~ #pedido .ver-t-8 { display: inline-flex; }
-#t-9:checked ~ #pedido .ver-t-9 { display: inline-flex; }
-#t-10:checked ~ #pedido .ver-t-10 { display: inline-flex; }
-#t-0:checked ~ #pedido .linea-t { display: none; }
-#t-0:checked ~ #pedido .guiso-t { display: none; }
-#t-0:checked ~ #pedido .fila-t { border: 1px dashed #e2d3b2; }
-
-/* ----- Burritos ($22) ----- */
-#b-1:checked { counter-increment: cb 1 sb 22 pzas 1 total 22; }
-#b-2:checked { counter-increment: cb 2 sb 44 pzas 2 total 44; }
-#b-3:checked { counter-increment: cb 3 sb 66 pzas 3 total 66; }
-#b-4:checked { counter-increment: cb 4 sb 88 pzas 4 total 88; }
-#b-5:checked { counter-increment: cb 5 sb 110 pzas 5 total 110; }
-#b-6:checked { counter-increment: cb 6 sb 132 pzas 6 total 132; }
-#b-7:checked { counter-increment: cb 7 sb 154 pzas 7 total 154; }
-#b-8:checked { counter-increment: cb 8 sb 176 pzas 8 total 176; }
-#b-9:checked { counter-increment: cb 9 sb 198 pzas 9 total 198; }
-#b-10:checked { counter-increment: cb 10 sb 220 pzas 10 total 220; }
-#b-0:checked ~ #pedido .ver-b-0 { display: inline-flex; }
-#b-1:checked ~ #pedido .ver-b-1 { display: inline-flex; }
-#b-2:checked ~ #pedido .ver-b-2 { display: inline-flex; }
-#b-3:checked ~ #pedido .ver-b-3 { display: inline-flex; }
-#b-4:checked ~ #pedido .ver-b-4 { display: inline-flex; }
-#b-5:checked ~ #pedido .ver-b-5 { display: inline-flex; }
-#b-6:checked ~ #pedido .ver-b-6 { display: inline-flex; }
-#b-7:checked ~ #pedido .ver-b-7 { display: inline-flex; }
-#b-8:checked ~ #pedido .ver-b-8 { display: inline-flex; }
-#b-9:checked ~ #pedido .ver-b-9 { display: inline-flex; }
-#b-10:checked ~ #pedido .ver-b-10 { display: inline-flex; }
-#b-0:checked ~ #pedido .linea-b { display: none; }
-#b-0:checked ~ #pedido .guiso-b { display: none; }
-#b-0:checked ~ #pedido .fila-b { border: 1px dashed #e2d3b2; }
-
-/* ----- Carrito vacío: los 3 productos en 0 ----- */
-#g-0:checked ~ #t-0:checked ~ #b-0:checked ~ #pedido .carrito-vacio { display: block; }
-#g-0:checked ~ #t-0:checked ~ #b-0:checked ~ #pedido .carrito-total { display: none; }
