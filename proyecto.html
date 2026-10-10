@@ -22,7 +22,51 @@
 
 
 <body>
-    <header class="header-hero">
+    <!-- =====================================================================
+         esto es lo del ESTADO DEL CARRITO 
+         Son botones de radio escondidos uno por cada cantidad (0 a 10) de cada producto.
+         Al darle clic al + o al − del formulario de pedir, en realidad se marca uno de estos.
+         El CSS lee cuál está marcado (:checked) para mostrar números, carrito y total.
+         Deben quedar aquí arriba, antes del header, para que el nav también los "vea".
+         ===================================================================== -->
+    <!-- Gorditas -->
+    <input type="radio" class="estado" name="cant_gordita" id="g-0" value="0" form="form-pedido" checked>
+    <input type="radio" class="estado" name="cant_gordita" id="g-1" value="1" form="form-pedido">
+    <input type="radio" class="estado" name="cant_gordita" id="g-2" value="2" form="form-pedido">
+    <input type="radio" class="estado" name="cant_gordita" id="g-3" value="3" form="form-pedido">
+    <input type="radio" class="estado" name="cant_gordita" id="g-4" value="4" form="form-pedido">
+    <input type="radio" class="estado" name="cant_gordita" id="g-5" value="5" form="form-pedido">
+    <input type="radio" class="estado" name="cant_gordita" id="g-6" value="6" form="form-pedido">
+    <input type="radio" class="estado" name="cant_gordita" id="g-7" value="7" form="form-pedido">
+    <input type="radio" class="estado" name="cant_gordita" id="g-8" value="8" form="form-pedido">
+    <input type="radio" class="estado" name="cant_gordita" id="g-9" value="9" form="form-pedido">
+    <input type="radio" class="estado" name="cant_gordita" id="g-10" value="10" form="form-pedido">
+    <!-- Tortillones -->
+    <input type="radio" class="estado" name="cant_tortillon" id="t-0" value="0" form="form-pedido" checked>
+    <input type="radio" class="estado" name="cant_tortillon" id="t-1" value="1" form="form-pedido">
+    <input type="radio" class="estado" name="cant_tortillon" id="t-2" value="2" form="form-pedido">
+    <input type="radio" class="estado" name="cant_tortillon" id="t-3" value="3" form="form-pedido">
+    <input type="radio" class="estado" name="cant_tortillon" id="t-4" value="4" form="form-pedido">
+    <input type="radio" class="estado" name="cant_tortillon" id="t-5" value="5" form="form-pedido">
+    <input type="radio" class="estado" name="cant_tortillon" id="t-6" value="6" form="form-pedido">
+    <input type="radio" class="estado" name="cant_tortillon" id="t-7" value="7" form="form-pedido">
+    <input type="radio" class="estado" name="cant_tortillon" id="t-8" value="8" form="form-pedido">
+    <input type="radio" class="estado" name="cant_tortillon" id="t-9" value="9" form="form-pedido">
+    <input type="radio" class="estado" name="cant_tortillon" id="t-10" value="10" form="form-pedido">
+    <!-- Burritos -->
+    <input type="radio" class="estado" name="cant_burrito" id="b-0" value="0" form="form-pedido" checked>
+    <input type="radio" class="estado" name="cant_burrito" id="b-1" value="1" form="form-pedido">
+    <input type="radio" class="estado" name="cant_burrito" id="b-2" value="2" form="form-pedido">
+    <input type="radio" class="estado" name="cant_burrito" id="b-3" value="3" form="form-pedido">
+    <input type="radio" class="estado" name="cant_burrito" id="b-4" value="4" form="form-pedido">
+    <input type="radio" class="estado" name="cant_burrito" id="b-5" value="5" form="form-pedido">
+    <input type="radio" class="estado" name="cant_burrito" id="b-6" value="6" form="form-pedido">
+    <input type="radio" class="estado" name="cant_burrito" id="b-7" value="7" form="form-pedido">
+    <input type="radio" class="estado" name="cant_burrito" id="b-8" value="8" form="form-pedido">
+    <input type="radio" class="estado" name="cant_burrito" id="b-9" value="9" form="form-pedido">
+    <input type="radio" class="estado" name="cant_burrito" id="b-10" value="10" form="form-pedido">
+  
+    <header class="header-hero" id="inicio">
     <div class="contenido-hero contenedor">
         <h1>EL VERDADERO ANTOJO,<br> TIENE FORMA DE GORDITA</h1>
         <h2>Gorditas, tortillones y burritos preparados con amor y tradición</h2>
@@ -37,17 +81,22 @@
             </a>
 
             <nav class="navegacion-principal">
-                <a href="#">INICIO</a>
-                <a href="#">MENÚ</a>
-                <a href="#">UBICACIÓN</a>
-                <a href="#">NOSOTROS</a>
-                <a href="#">CONTACTO</a>
+                <a href="#inicio">INICIO</a>
+                <a href="#menu">MENÚ</a>
+                <a href="#ubicacion">UBICACIÓN</a>
+                <a href="#nosotros">NOSOTROS</a>
+                <a href="#contacto">CONTACTO</a>
             </nav>
+
+            <!-- Carrito en la barra de navegación -->
+            <a href="#pedido" class="carrito-nav" aria-label="Ver mi carrito">
+                🛒 <span class="carrito-nav__num"></span>
+            </a>
         </div> 
     </div> 
     
-    <!-- =================================================================================================================================-->
-    <div class="menu contenedor">
+    <!-- ====menu===========================================================================================================================-->
+    <div class="menu contenedor" id="menu">
 
   <!-- Encabezado -->
   <div class="encabezado-menu">
@@ -63,6 +112,10 @@
     <button class="tab-btn">Tortillones</button>
     <button class="tab-btn">Burritos</button>
   </div>
+
+
+
+
 
   <!-- Grid de tarjetas -->
   <div class="grid-tarjetas">
@@ -85,14 +138,21 @@
             <li>Frijoles refritos</li>
             <li>Asado rojo</li>
             <li>Picadillo</li>
-            <li>Papas rojas / verdes</li>
-            <li>Discada norteña</li>
+            <li>Papas rojas</li>
+            <li>Papas verdes</li>
+            <li>Discada  </li>
+            <li>Mole </li>
+            <li>Huevo con salsa verde </li>
+            <li>Huevo con salsa roja </li>
+            <li>Deshebrada </li>
+            <li>Bistec </li>    
           </ul>
         </details>
 
         <div class="pie-tarjeta">
           <span class="detalle-guisado">Elige el guiso de tu agrado</span>
-          <button class="btn-pedir">Pedir &gt;</button>
+          <!-- el botón ahora es un enlace que te lleva al formulario de pedido -->
+          <a href="#pedido" class="btn-pedir">Pedir &gt;</a>
         </div>
       </div>
     </article>
@@ -115,14 +175,20 @@
             <li>Frijoles refritos</li>
             <li>Asado rojo</li>
             <li>Picadillo</li>
-            <li>Papas rojas / verdes</li>
-            <li>Discada norteña</li>
+            <li>Papas rojas</li>
+            <li>Discada</li>
+            <li>Papas verdes</li>
+            <li>Mole </li>
+            <li>Huevo con salsa verde </li>
+            <li>Huevo con salsa roja </li>
+            <li>Deshebrada </li>
+            <li>Bistec </li>    
           </ul>
         </details>
 
         <div class="pie-tarjeta">
           <span class="detalle-guisado">Elige el guiso de tu agrado</span>
-          <button class="btn-pedir">Pedir &gt;</button>
+          <a href="#pedido" class="btn-pedir">Pedir &gt;</a>
         </div>
       </div>
     </article>
@@ -145,14 +211,21 @@
             <li>Frijoles refritos</li>
             <li>Asado rojo</li>
             <li>Picadillo</li>
-            <li>Papas rojas / verdes</li>
-            <li>Discada norteña</li>
+            <li>Papas rojas</li>
+            <li>Discada</li>
+            <li>Papas verdes</li>
+            <li>Discada  </li>
+            <li>Mole </li>
+            <li>Huevo con salsa verde </li>
+            <li>Huevo con salsa roja </li>
+            <li>Deshebrada </li>
+            <li>Bistec </li>                  
           </ul>
         </details>
 
         <div class="pie-tarjeta">
           <span class="detalle-guisado">Elige el guiso de tu agrado</span>
-          <button class="btn-pedir">Pedir &gt;</button>
+          <a href="#pedido" class="btn-pedir">Pedir &gt;</a>
         </div>
       </div>
     </article>
@@ -162,15 +235,283 @@
 
 
     <!-- SECCIÓN UBICACIÓN C -->
-     <!--puse datos mios jajjaajajaj-->
+     
     <section id="ubicacion" class="seccion-ubicacion">
         <h2>UBICACIÓN Y HORARIOS</h2>
         <div class="grid-ubicacion">
             <div class="datos-contacto">
-                <p><strong>📍 Dirección:</strong> Boulevard laguna sur 1079 colonia lazaro cardenas</p>
-                <p><strong>🕒 Horario:</strong> Lunes a domingo de 6:30 PM a 11:30 PM</p>
-                <p><strong>📞 Teléfono:</strong> 871 7876027</p>
+                <p><strong>📍 Dirección:</strong> Boulevard Laguna Sur 1079, Colonia Lazaro Cardenas</p>
+                <p><strong>🕒 Horario:</strong> Lunes a Domingo de 6:30 PM a 11:30 PM</p>
+                <p><strong>📞 Teléfono:</strong> 8717876027</p>
             </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         SECCIÓN NOSOTROS
+         ===================================================== -->
+    <section id="nosotros" class="seccion-nosotros">
+        <div class="nosotros-grid contenedor">
+
+            <div class="nosotros-foto">
+                
+                <img src="imagenes/nosotros.png" alt="Preparando gorditas en el comal">
+            </div>
+
+            <div class="nosotros-contenido">
+                <span class="subtitulo-comal">NUESTRA HISTORIA</span>
+                <h2>Del comal a tu mesa</h2>
+                <p>
+                   Dos amigos, un gran apetito y una idea muy clara: hacer la gordita mejor servida. Así nació La Gordiflona; la llamamos así porque nuestro tamaño destaca y está pensado para satisfacer de verdad.
+                </p>
+                <p>
+                   Amasamos a diario, guisamos con calma y te servimos con una sonrisa. Queremos que cada mordida te recuerde que lo bueno se hace con paciencia y cariño.
+                </p>
+
+               
+            </div>
+
+        </div>
+
+        <!-- Tarjetas con lo que nos distingue -->
+        <div class="valores contenedor">
+            <article class="valor">
+                <h3>Hecho al momento</h3>
+                <p>Tu pedido sale del comal directo a tus manos.</p>
+            </article>
+            <article class="valor">
+                <h3>Calidad de ingredientes</h3>
+                <p>Guisos y salsas preparados cada día.</p>
+            </article>
+            <article class="valor">
+                <h3>Precios justos</h3>
+                <p>Antojos para todos los bolsillos.</p>
+            </article>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+          PEDIDO Y FORMAS DE PAGO
+         ===================================================== -->
+    <section id="pedido" class="seccion-pedido">
+      
+        <div class="pedido-confirmacion contenedor" id="pedido-enviado">
+            <p> ¡Gracias! Recibimos tu pedido. Te avisamos cuando esté listo.</p>
+        </div>
+
+        <div class="pedido-grid contenedor">
+
+            <form class="pedido-form" id="form-pedido" action="#pedido-enviado" method="get">
+                <h2>Haz tu pedido</h2>
+
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="871 000 0000" required>
+
+                <span class="etiqueta-campo">¿Qué se te antoja?</span>
+                <div class="productos-pedido">
+                    <div class="producto-fila fila-g">
+                        <div class="producto-info">
+                            <strong>Gorditas</strong>
+                            <span class="producto-precio">$20 c/u</span>
+                        </div>
+                        <div class="contador">
+                            <span class="btn-menos apagado ver-g-0">−</span>
+                            <label for="g-0" class="btn-menos ver-g-1" aria-label="Quitar una gordita">−</label>
+                            <label for="g-1" class="btn-menos ver-g-2" aria-label="Quitar una gordita">−</label>
+                            <label for="g-2" class="btn-menos ver-g-3" aria-label="Quitar una gordita">−</label>
+                            <label for="g-3" class="btn-menos ver-g-4" aria-label="Quitar una gordita">−</label>
+                            <label for="g-4" class="btn-menos ver-g-5" aria-label="Quitar una gordita">−</label>
+                            <label for="g-5" class="btn-menos ver-g-6" aria-label="Quitar una gordita">−</label>
+                            <label for="g-6" class="btn-menos ver-g-7" aria-label="Quitar una gordita">−</label>
+                            <label for="g-7" class="btn-menos ver-g-8" aria-label="Quitar una gordita">−</label>
+                            <label for="g-8" class="btn-menos ver-g-9" aria-label="Quitar una gordita">−</label>
+                            <label for="g-9" class="btn-menos ver-g-10" aria-label="Quitar una gordita">−</label>
+                            <span class="numero num-g"></span>
+                            <label for="g-1" class="btn-mas ver-g-0" aria-label="Agregar una gordita">+</label>
+                            <label for="g-2" class="btn-mas ver-g-1" aria-label="Agregar una gordita">+</label>
+                            <label for="g-3" class="btn-mas ver-g-2" aria-label="Agregar una gordita">+</label>
+                            <label for="g-4" class="btn-mas ver-g-3" aria-label="Agregar una gordita">+</label>
+                            <label for="g-5" class="btn-mas ver-g-4" aria-label="Agregar una gordita">+</label>
+                            <label for="g-6" class="btn-mas ver-g-5" aria-label="Agregar una gordita">+</label>
+                            <label for="g-7" class="btn-mas ver-g-6" aria-label="Agregar una gordita">+</label>
+                            <label for="g-8" class="btn-mas ver-g-7" aria-label="Agregar una gordita">+</label>
+                            <label for="g-9" class="btn-mas ver-g-8" aria-label="Agregar una gordita">+</label>
+                            <label for="g-10" class="btn-mas ver-g-9" aria-label="Agregar una gordita">+</label>
+                            <span class="btn-mas apagado ver-g-10">+</span>
+                        </div>
+                        <div class="guiso-fila guiso-g">
+                            <label for="guiso-gordita">¿De qué guiso?</label>
+                            <select id="guiso-gordita" name="guiso_gordita">
+                                <option>Chicharrón prensado</option>
+                                <option>Chicharrón peya</option>
+                                <option>Frijoles refritos</option>
+                                <option>Asado rojo</option>
+                                <option>Picadillo</option>
+                                <option>Papas rojas verdes</option>
+                                  <option>Papas verdes</option>
+                                <option>Discada </option>
+                                <option>Mole</option>
+                                <option>Huevo con salsa verde</option>
+                                <option>Huevo con salsa roja</option>
+                                <option>Deshebrada</option>
+                                <option>Bistec</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="producto-fila fila-t">
+                        <div class="producto-info">
+                            <strong>Tortillones</strong>
+                            <span class="producto-precio">$60 c/u</span>
+                        </div>
+                        <div class="contador">
+                            <span class="btn-menos apagado ver-t-0">−</span>
+                            <label for="t-0" class="btn-menos ver-t-1" aria-label="Quitar un tortillón">−</label>
+                            <label for="t-1" class="btn-menos ver-t-2" aria-label="Quitar un tortillón">−</label>
+                            <label for="t-2" class="btn-menos ver-t-3" aria-label="Quitar un tortillón">−</label>
+                            <label for="t-3" class="btn-menos ver-t-4" aria-label="Quitar un tortillón">−</label>
+                            <label for="t-4" class="btn-menos ver-t-5" aria-label="Quitar un tortillón">−</label>
+                            <label for="t-5" class="btn-menos ver-t-6" aria-label="Quitar un tortillón">−</label>
+                            <label for="t-6" class="btn-menos ver-t-7" aria-label="Quitar un tortillón">−</label>
+                            <label for="t-7" class="btn-menos ver-t-8" aria-label="Quitar un tortillón">−</label>
+                            <label for="t-8" class="btn-menos ver-t-9" aria-label="Quitar un tortillón">−</label>
+                            <label for="t-9" class="btn-menos ver-t-10" aria-label="Quitar un tortillón">−</label>
+                            <span class="numero num-t"></span>
+                            <label for="t-1" class="btn-mas ver-t-0" aria-label="Agregar un tortillón">+</label>
+                            <label for="t-2" class="btn-mas ver-t-1" aria-label="Agregar un tortillón">+</label>
+                            <label for="t-3" class="btn-mas ver-t-2" aria-label="Agregar un tortillón">+</label>
+                            <label for="t-4" class="btn-mas ver-t-3" aria-label="Agregar un tortillón">+</label>
+                            <label for="t-5" class="btn-mas ver-t-4" aria-label="Agregar un tortillón">+</label>
+                            <label for="t-6" class="btn-mas ver-t-5" aria-label="Agregar un tortillón">+</label>
+                            <label for="t-7" class="btn-mas ver-t-6" aria-label="Agregar un tortillón">+</label>
+                            <label for="t-8" class="btn-mas ver-t-7" aria-label="Agregar un tortillón">+</label>
+                            <label for="t-9" class="btn-mas ver-t-8" aria-label="Agregar un tortillón">+</label>
+                            <label for="t-10" class="btn-mas ver-t-9" aria-label="Agregar un tortillón">+</label>
+                            <span class="btn-mas apagado ver-t-10">+</span>
+                        </div>
+                        <div class="guiso-fila guiso-t">
+                            <label for="guiso-tortillon">¿De qué guiso?</label>
+                            <select id="guiso-tortillon" name="guiso_tortillon">
+                              <option>Chicharrón prensado</option>
+                                <option>Chicharrón peya</option>
+                                <option>Frijoles refritos</option>
+                                <option>Asado rojo</option>
+                                <option>Picadillo</option>
+                                <option>Papas rojas verdes</option>
+                                  <option>Papas verdes</option>
+                                <option>Discada </option>
+                                <option>Mole</option>
+                                <option>Huevo con salsa verde</option>
+                                <option>Huevo con salsa roja</option>
+                                <option>Deshebrada</option>
+                                <option>Bistec</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="producto-fila fila-b">
+                        <div class="producto-info">
+                            <strong>Burritos</strong>
+                            <span class="producto-precio">$22 c/u</span>
+                        </div>
+                        <div class="contador">
+                            <span class="btn-menos apagado ver-b-0">−</span>
+                            <label for="b-0" class="btn-menos ver-b-1" aria-label="Quitar un burrito">−</label>
+                            <label for="b-1" class="btn-menos ver-b-2" aria-label="Quitar un burrito">−</label>
+                            <label for="b-2" class="btn-menos ver-b-3" aria-label="Quitar un burrito">−</label>
+                            <label for="b-3" class="btn-menos ver-b-4" aria-label="Quitar un burrito">−</label>
+                            <label for="b-4" class="btn-menos ver-b-5" aria-label="Quitar un burrito">−</label>
+                            <label for="b-5" class="btn-menos ver-b-6" aria-label="Quitar un burrito">−</label>
+                            <label for="b-6" class="btn-menos ver-b-7" aria-label="Quitar un burrito">−</label>
+                            <label for="b-7" class="btn-menos ver-b-8" aria-label="Quitar un burrito">−</label>
+                            <label for="b-8" class="btn-menos ver-b-9" aria-label="Quitar un burrito">−</label>
+                            <label for="b-9" class="btn-menos ver-b-10" aria-label="Quitar un burrito">−</label>
+                            <span class="numero num-b"></span>
+                            <label for="b-1" class="btn-mas ver-b-0" aria-label="Agregar un burrito">+</label>
+                            <label for="b-2" class="btn-mas ver-b-1" aria-label="Agregar un burrito">+</label>
+                            <label for="b-3" class="btn-mas ver-b-2" aria-label="Agregar un burrito">+</label>
+                            <label for="b-4" class="btn-mas ver-b-3" aria-label="Agregar un burrito">+</label>
+                            <label for="b-5" class="btn-mas ver-b-4" aria-label="Agregar un burrito">+</label>
+                            <label for="b-6" class="btn-mas ver-b-5" aria-label="Agregar un burrito">+</label>
+                            <label for="b-7" class="btn-mas ver-b-6" aria-label="Agregar un burrito">+</label>
+                            <label for="b-8" class="btn-mas ver-b-7" aria-label="Agregar un burrito">+</label>
+                            <label for="b-9" class="btn-mas ver-b-8" aria-label="Agregar un burrito">+</label>
+                            <label for="b-10" class="btn-mas ver-b-9" aria-label="Agregar un burrito">+</label>
+                            <span class="btn-mas apagado ver-b-10">+</span>
+                        </div>
+                        <div class="guiso-fila guiso-b">
+                            <label for="guiso-burrito">¿De qué guiso?</label>
+                            <select id="guiso-burrito" name="guiso_burrito">
+                                 <option>Chicharrón prensado</option>
+                                <option>Chicharrón peya</option>
+                                <option>Frijoles refritos</option>
+                                <option>Asado rojo</option>
+                                <option>Picadillo</option>
+                                <option>Papas rojas verdes</option>
+                                  <option>Papas verdes</option>
+                                <option>Discada </option>
+                                <option>Mole</option>
+                                <option>Huevo con salsa verde</option>
+                                <option>Huevo con salsa roja</option>
+                                <option>Deshebrada</option>
+                                <option>Bistec</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <fieldset>
+                    <legend>¿Cómo lo quieres?</legend>
+                    <label class="opcion"><input type="radio" name="tipo" value="aqui" checked> Comer aquí</label>
+                    <label class="opcion"><input type="radio" name="tipo" value="llevar"> Para llevar</label>
+                </fieldset>
+
+                <label for="comentarios">Comentarios</label>
+                <textarea id="comentarios" name="comentarios" rows="3" placeholder="Sin picante, con todo, etc."></textarea>
+
+                <button type="submit" class="btn-enviar">Enviar pedido</button>
+            </form>
+
+            <div class="pedido-lateral">
+
+                <!--carrito lateral -->
+                <aside class="carrito">
+                    <h3>Tu carrito 🛒</h3>
+                    <p class="carrito-vacio">Aún no agregas nada. Usa el botón + en tu pedido.</p>
+                    <ul class="carrito-lista">
+                        <li class="linea linea-g">
+                            <span><span class="cant-g"></span> × Gorditas</span>
+                            <strong class="sub-g"></strong>
+                        </li>
+                        <li class="linea linea-t">
+                            <span><span class="cant-t"></span> × Tortillones</span>
+                            <strong class="sub-t"></strong>
+                        </li>
+                        <li class="linea linea-b">
+                            <span><span class="cant-b"></span> × Burritos</span>
+                            <strong class="sub-b"></strong>
+                        </li>
+                    </ul>
+                    <div class="carrito-total">
+                        <span>Total</span>
+                        <strong class="total-num"></strong>
+                    </div>
+                </aside>
+
+                <aside class="pago-info">
+                <h3>Formas de pago</h3>
+                <p>Aceptamos efectivo, transferencia y tarjeta.</p>
+                <img src="imagenes/paypal.png" alt="Métodos de pago: PayPal y tarjetas">
+                <p class="pago-nota">Pago en línea próximamente.</p>
+                </aside>
+
+            </div>
+
         </div>
     </section>
 
@@ -178,8 +519,10 @@
     <footer id="contacto">
         <p>&copy; 2026 La gordiflona—— Todos los derechos reservados.</p>
         <div class="redes-sociales">
-            <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">TikTok</a>
-        </div>
+    <a href="https://www.facebook.com/share/18YFENtcpm/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a> |
+    <a href="https://instagram.com/rubiihdezz?mdxt=YXk1cDRqcTRneHd3&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a> |
+    <a href="https://www.tiktok.com/@valcthd" target="_blank" rel="noopener noreferrer">TikTok</a>
+</div>
     </footer>
 </body>
 </html>
