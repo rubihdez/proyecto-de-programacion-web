@@ -263,7 +263,7 @@
 
         <div class="pedido-grid contenedor">
 
-            <form class="pedido-form" id="form-pedido" action="#pedido-enviado" method="get">
+            <form class="pedido-form" id="form-pedido" action="orden.php" method="post">
                 <h2>Haz tu pedido</h2>
 
                 <label for="nombre">Nombre</label>
@@ -274,7 +274,7 @@
 
                 <span class="etiqueta-campo">¿Qué se te antoja?</span>
                 <div class="productos-pedido">
-                    <div class="producto-fila fila-g">
+                    <div class="producto-fila fila-g" data-nombre="Gorditas" data-precio="20">
                         <div class="producto-info">
                             <strong>Gorditas</strong>
                             <span class="producto-precio">$20 c/u</span>
@@ -282,7 +282,8 @@
                         <div class="contador">
                             <!--Aqui van labels y botones para el carrito-->
                             <button type="button" class="btn-restar" aria-label="Restar una gordita">-</button>
-                            <span class="numero num-g">0</span>
+                            <span class="numero">0</span>
+                            <input type="hidden" name="cantidad_gordita" value="0">
                             <button type="button" class="btn-sumar" aria-label="Sumar una gordita">+</button>
                         </div>
                         <div class="guiso-fila guiso-g">
@@ -304,7 +305,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="producto-fila fila-t">
+                    <div class="producto-fila fila-t" data-nombre="Tortillones" data-precio="60">
                         <div class="producto-info">
                             <strong>Tortillones</strong>
                             <span class="producto-precio">$60 c/u</span>
@@ -312,7 +313,8 @@
                         <div class="contador">
                             <!--Aqui van labels y botones para el carrito-->
                             <button type="button" class="btn-restar" aria-label="Restar una gordita">-</button>
-                            <span class="numero num-g">0</span>
+                            <span class="numero">0</span>
+                            <input type="hidden" name="cantidad_tortillon" value="0">
                             <button type="button" class="btn-sumar" aria-label="Sumar una gordita">+</button>
                            
                         </div>
@@ -336,7 +338,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="producto-fila fila-b">
+                    <div class="producto-fila fila-b" data-nombre="Burritos" data-precio="22">
                         <div class="producto-info">
                             <strong>Burritos</strong>
                             <span class="producto-precio">$22 c/u</span>
@@ -344,7 +346,8 @@
                         <div class="contador">
                             <!--Aqui van labels y botones para el carrito-->
                             <button type="button" class="btn-restar" aria-label="Restar una gordita">-</button>
-                            <span class="numero num-g">0</span>
+                            <span class="numero">0</span>
+                            <input type="hidden" name="cantidad_burrito" value="0">
                             <button type="button" class="btn-sumar" aria-label="Sumar una gordita">+</button>
                         </div>
                         <div class="guiso-fila guiso-b">
@@ -378,7 +381,7 @@
                 <label for="comentarios">Comentarios</label>
                 <textarea id="comentarios" name="comentarios" rows="3" placeholder="Sin picante, con todo, etc."></textarea>
 
-                <button type="submit" class="btn-enviar">Enviar pedido</button>
+                <button type="submit" class="btn-enviar">Enviar pedido y pagar</button>
             </form>
 
             <div class="pedido-lateral">
@@ -386,23 +389,10 @@
                 <aside class="carrito">
                     <h3>Tu carrito 🛒</h3>
                     <p class="carrito-vacio">Aún no agregas nada. Usa el botón + en tu pedido.</p>
-                    <ul class="carrito-lista">
-                        <li class="linea">
-                            <span>0 × Gorditas</span>
-                            <strong>$0</strong>
-                        </li>
-                        <li class="linea">
-                            <span>0 × Gorditas</span>
-                            <strong>$0</strong>
-                        </li>
-                        <li class="linea">
-                            <span>0 × Gorditas</span>
-                            <strong>$0</strong>
-                        </li>
-                    </ul>
+                    <ul class="carrito-lista"></ul>
                     <div class="carrito-total">
                         <span>Total</span>
-                        <strong class="total-num"></strong>
+                        <strong class="total-num">$0</strong>
                     </div>
                 </aside>
 
@@ -410,7 +400,7 @@
                 <h3>Formas de pago</h3>
                 <p>Aceptamos efectivo, transferencia y tarjeta.</p>
                 <img src="imagenes/paypal.png" alt="Métodos de pago: PayPal y tarjetas">
-                <p class="pago-nota">Pago en línea próximamente.</p>
+                <p class="pago-nota">Al enviar tu pedido pasarás a la página de pago (simulado).</p>
                 </aside>
             </div>
 
@@ -426,5 +416,66 @@
           <a href="https://www.tiktok.com/@valcthd" target="_blank" rel="noopener noreferrer">TikTok</a>
         </div>
     </footer>
+
+    <script>
+    // Carrito: contadores, resumen lateral, total y campos ocultos del formulario
+    (function () {
+        var form = document.getElementById('form-pedido');
+        var filas = form.querySelectorAll('.producto-fila');
+        var lista = document.querySelector('.carrito-lista');
+        var vacio = document.querySelector('.carrito-vacio');
+        var totalEl = document.querySelector('.total-num');
+        var navNum = document.querySelector('.carrito-nav__num');
+
+        function actualizar() {
+            var total = 0, piezas = 0;
+            lista.innerHTML = '';
+            filas.forEach(function (fila) {
+                var cant = parseInt(fila.querySelector('input[type="hidden"]').value, 10) || 0;
+                var precio = parseInt(fila.dataset.precio, 10);
+                fila.querySelector('.numero').textContent = cant;
+                if (cant > 0) {
+                    var li = document.createElement('li');
+                    li.className = 'linea';
+                    var a = document.createElement('span');
+                    a.textContent = cant + ' × ' + fila.dataset.nombre;
+                    var b = document.createElement('strong');
+                    b.textContent = '$' + (cant * precio);
+                    li.appendChild(a); li.appendChild(b);
+                    lista.appendChild(li);
+                }
+                total += cant * precio;
+                piezas += cant;
+            });
+            vacio.style.display = piezas === 0 ? 'block' : 'none';
+            totalEl.textContent = '$' + total;
+            navNum.textContent = piezas > 0 ? piezas : '';
+        }
+
+        filas.forEach(function (fila) {
+            var campo = fila.querySelector('input[type="hidden"]');
+            fila.querySelector('.btn-sumar').addEventListener('click', function () {
+                campo.value = Math.min((parseInt(campo.value, 10) || 0) + 1, 50);
+                actualizar();
+            });
+            fila.querySelector('.btn-restar').addEventListener('click', function () {
+                campo.value = Math.max((parseInt(campo.value, 10) || 0) - 1, 0);
+                actualizar();
+            });
+        });
+
+        // No enviar si el carrito está vacío
+        form.addEventListener('submit', function (e) {
+            var piezas = 0;
+            filas.forEach(function (f) { piezas += parseInt(f.querySelector('input[type="hidden"]').value, 10) || 0; });
+            if (piezas === 0) {
+                e.preventDefault();
+                alert('Agrega al menos una pieza a tu pedido con el botón +');
+            }
+        });
+
+        actualizar();
+    })();
+    </script>
 </body>
 </html>
