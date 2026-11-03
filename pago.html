@@ -80,7 +80,7 @@
 </main>
 
 <script>
-    // Leer los datos que manda orden.php en la URL
+    // Leer los datos que manda php/orden.php en la URL
     var params = new URLSearchParams(window.location.search);
     var folio = params.get('folio');
     var total = params.get('total');
@@ -116,7 +116,8 @@
         this.value = this.value.replace(/\D/g, '');
     });
 
-    // Pago simulado
+    // Pago simulado: al aprobarse, avisa al servidor para marcar el pedido
+    // como pagado, descontar el stock y sumar a "vendidos".
     document.getElementById('form-pago').addEventListener('submit', function (e) {
         e.preventDefault();
         var digitos = document.getElementById('numero').value.replace(/\D/g, '');
@@ -124,12 +125,29 @@
             alert('El número de tarjeta debe tener 16 dígitos.');
             return;
         }
-        document.getElementById('e-nombre').textContent = params.get('nombre') || '';
-        document.getElementById('e-folio').textContent = 'Folio: ' + folio;
-        document.getElementById('resumen').style.display = 'none';
-        document.getElementById('bloque-pago').style.display = 'none';
-        document.getElementById('exito').style.display = 'block';
-        this.reset();
+
+        var formPago = this;
+        var datos = new FormData();
+        datos.append('folio', folio);
+        datos.append('paypal_id', 'SIMULADO');
+
+        fetch('php/confirmar_pago.php', { method: 'POST', body: datos })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+                if (!res.ok) {
+                    alert(res.error || 'No se pudo confirmar el pago.');
+                    return;
+                }
+                document.getElementById('e-nombre').textContent = params.get('nombre') || '';
+                document.getElementById('e-folio').textContent = 'Folio: ' + folio;
+                document.getElementById('resumen').style.display = 'none';
+                document.getElementById('bloque-pago').style.display = 'none';
+                document.getElementById('exito').style.display = 'block';
+                formPago.reset();
+            })
+            .catch(function () {
+                alert('No se pudo conectar con el servidor.');
+            });
     });
 </script>
 </body>
