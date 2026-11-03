@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
 );
 
 ------- PRODUCTOS -----
+
 -- "clave" es la palabra que usa el formulario: gordita, tortillon, burrito
 CREATE TABLE IF NOT EXISTS productos (
   id          INT AUTO_INCREMENT PRIMARY KEY,
